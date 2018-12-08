@@ -1,10 +1,14 @@
-// canvas element
-var mCanvas, bCanvas;
-// context to draw
-var mCtx, bCtx;
+
+// wrap classes and methods
+window.Game = {};
+
 // canvas width & height
 var canvasW, canvasH;
 // obj
-var player;
-var speed = 20;
-var canWalk = true;
+var camera, player;
+
+var pictureSize = {
+    playerW: 49,
+    playerH: 40
+};
+

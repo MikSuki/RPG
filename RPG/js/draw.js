@@ -1,6 +1,4 @@
 function drawBack(){
-    bCtx.fillStyle = "#AAAAAA";
-    bCtx.fillRect(0, 0, canvasW, canvasH);
 }
 
 function drawRole(){
