@@ -191,7 +191,7 @@
 
 // class Player
 (() => {
-    function Player(x, y, w, h, imgSrc) {
+    function Player(x, y, w, h, imgSrc, imgSrc2) {
         // (x, y) = center of object
         // and they are global pos not local pos !
         this.x = x;
@@ -201,6 +201,8 @@
         this.height = h;
         this.img = new Image();
         this.img.src = imgSrc;
+        this.img2 = new Image();
+        this.img2.src = imgSrc2;
     }
 
     Player.prototype.update = function (step, worldWidth, worldHeight) {
@@ -232,7 +234,11 @@
 
     Player.prototype.draw = function (context, xView, yView) {
         // before draw , convert global position to local position			
-        context.drawImage(this.img, (this.x - this.width / 2) - xView, (this.y - this.height / 2) - yView, this.width, this.height);
+        if (Game.controls.up)
+            context.drawImage(this.img2, (this.x - this.width / 2) - xView, (this.y - this.height / 2) - yView, this.width, this.height);
+        else
+            context.drawImage(this.img, (this.x - this.width / 2) - xView, (this.y - this.height / 2) - yView, this.width, this.height);
+
     }
 
     // add class
@@ -253,7 +259,7 @@
     canvas.height = canvasH;
 
     // set picture size
-    for(var e in pictureSize) {
+    for (var e in pictureSize) {
         pictureSize[e] *= 2;
     }
 
@@ -273,7 +279,7 @@
     room.map.generate();
 
     // setup player
-    player = new Game.Player(50, 50, pictureSize.playerW, pictureSize.playerH, "picture/MikuStand1.png");
+    player = new Game.Player(50, 50, pictureSize.playerW, pictureSize.playerH, "picture/MikuStand1.png", "picture/MikuStandBack.png");
 
     // setup camera 
     camera = new Game.Camera(0, 0, canvasW, canvasH, room.width, room.height);
