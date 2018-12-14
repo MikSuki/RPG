@@ -4,11 +4,16 @@ window.Game = {};
 
 // canvas width & height
 var canvasW, canvasH;
+var grid;
 // obj
-var camera, player;
+var camera, map, player;
 
-var pictureSize = {
-    playerW: 49,
-    playerH: 40
+var pngSize = {
+    playerW: 49 * 2,
+    playerH: 40 * 2,
+    houseW: 163,
+    houseH: 228
 };
 
+
+var objArr = [];
